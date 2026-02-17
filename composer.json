@@ -1,0 +1,32 @@
+{
+    "name": "saade/filament-facehash",
+    "description": "Use Facehash as the default avatar provider in your Filament panels.",
+    "keywords": ["laravel", "filament", "filamentphp", "avatar", "facehash", "deterministic", "svg"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Saade",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^3.0|^4.0|^5.0",
+        "saade/facehash": "^1.0",
+        "spatie/laravel-package-tools": "^1.15"
+    },
+    "autoload": {
+        "psr-4": {
+            "Saade\\FilamentFacehash\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Saade\\FilamentFacehash\\FacehashServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
