@@ -4,6 +4,8 @@
 
 Generate unique, deterministic avatar faces for your Filament panels. Drop-in replacement for default user avatars — same name always produces the same face. Pure SVG, no GD or Imagick required.
 
+[Try the playground](https://facehash.saade.dev)
+
 ## Installation
 
 ```bash
