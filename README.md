@@ -1,5 +1,7 @@
 # Filament Facehash
 
+[![Plumb score](https://plumbphp.dev/badges/saade/filament-facehash/composite.svg)](https://plumbphp.dev/saade/filament-facehash)
+
 ![Facehash](art/cover.png)
 
 Generate unique, deterministic avatar faces for your Filament panels. Drop-in replacement for default user avatars — same name always produces the same face. Pure SVG, no GD or Imagick required.
