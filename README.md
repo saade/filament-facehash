@@ -14,7 +14,7 @@ composer require saade/filament-facehash
 
 ## Usage
 
-Add the provider and plugin to your panel configuration:
+Add the provider to your panel configuration. The plugin is optional — register it when you want to customize the avatars for that panel:
 
 ```php
 use Saade\FilamentFacehash\FacehashPlugin;
@@ -35,13 +35,16 @@ public function panel(Panel $panel): Panel
 Customize the avatars using the plugin's fluent API:
 
 ```php
+use Saade\Facehash\Enums\Format;
 use Saade\Facehash\Enums\Variant;
 use Saade\FilamentFacehash\FacehashPlugin;
 
 FacehashPlugin::make()
     ->size(40)                       // Avatar size in pixels (default: 40)
     ->variant(Variant::Gradient)     // Variant::Gradient or Variant::Solid (default: Gradient)
+    ->format(Format::Circle)         // Format::Circle, Format::Square or Format::Squircle (default: Circle)
     ->initial(true)                  // Show first letter of name (default: true)
+    ->blink(false)                   // Animate the eyes (default: false)
     ->colors([                       // Custom color palette
         '#ec4899',
         '#f59e0b',
@@ -51,7 +54,7 @@ FacehashPlugin::make()
     ])
 ```
 
-For more configuration options (routes, default overrides, etc.), visit the [Facehash package documentation](https://github.com/saade/facehash).
+Any option you leave unset falls back to the defaults in `config/facehash.php`, so the defaults shown above are the ones Facehash ships with. A record with a blank name gets a `?` avatar. For more configuration options (routes, default overrides, etc.), visit the [Facehash package documentation](https://github.com/saade/facehash).
 
 ## Model Trait
 
@@ -72,6 +75,8 @@ This gives you:
 $user->facehash_avatar_url  // data:image/svg+xml;base64,...
 ```
 
+The avatar uses the options of the plugin on the current panel — or on the default panel when there is no current one — so it matches what Filament shows.
+
 Override which attribute is used as the avatar name:
 
 ```php
@@ -83,6 +88,12 @@ public function facehashAvatarName(): Attribute
         get: fn () => $this->email  // use email instead of name
     );
 }
+```
+
+## Testing
+
+```bash
+composer test
 ```
 
 ## Credits
